@@ -3,3 +3,16 @@ server:
     contextPath: /muay-thai-service
   port: 8088
 
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    driverClassName: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.Oracle8iDialect
+    hibernate:
+      ddl-auto: none
+  h2:
+    console:
+      enabled: true
