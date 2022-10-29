@@ -1,0 +1,5 @@
+server:
+  servlet:
+    contextPath: /muay-thai-service
+  port: 8088
+
