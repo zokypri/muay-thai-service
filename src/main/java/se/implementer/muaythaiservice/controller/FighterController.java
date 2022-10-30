@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.implementer.muaythaiservice.model.FighterDetails;
+import se.implementer.muaythaiservice.model.FighterOverview;
 import se.implementer.muaythaiservice.service.FighterService;
 
 @Slf4j
@@ -33,6 +34,18 @@ public class FighterController {
     @GetMapping("/fighter/details/{fighterId}")
     public FighterDetails getFighterDetails(@PathVariable int fighterId) {
         return fighterService.getFighterDetails(fighterId);
+    }
+
+    @Operation(summary = " Get overview about one fighter")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fighter found"),
+            @ApiResponse(responseCode = "404", description = "Fighter not found",
+                    content = @Content)
+    })
+    @SecurityRequirement(name ="Bearer Auth")
+    @GetMapping("/fighter/overview/{fighterId}")
+    public FighterOverview getFighterOverview(@PathVariable int fighterId) {
+        return fighterService.getFighterOverview(fighterId);
     }
 
 }
