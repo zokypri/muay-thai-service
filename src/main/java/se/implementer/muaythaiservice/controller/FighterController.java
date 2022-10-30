@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.model.FighterOverview;
+import se.implementer.muaythaiservice.model.Gender;
 import se.implementer.muaythaiservice.service.FighterService;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -46,6 +49,18 @@ public class FighterController {
     @GetMapping("/fighter/overview/{fighterId}")
     public FighterOverview getFighterOverview(@PathVariable int fighterId) {
         return fighterService.getFighterOverview(fighterId);
+    }
+
+    @Operation(summary = " Get overview about one fighter")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fighter found"),
+            @ApiResponse(responseCode = "404", description = "Fighter not found",
+                    content = @Content)
+    })
+    @SecurityRequirement(name ="Bearer Auth")
+    @GetMapping("/active/{gender}")
+    public List<FighterOverview> getAllActiveFightersByGender(@PathVariable Gender gender) {
+        return fighterService.getAllActiveFightersByGender(gender);
     }
 
 }
