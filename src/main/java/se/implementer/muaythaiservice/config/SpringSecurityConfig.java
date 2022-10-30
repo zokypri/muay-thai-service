@@ -17,7 +17,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity security) throws Exception {
         security.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/v1/authenticate/user/**").permitAll()
+                .antMatchers("/v1/muay-thai/**").permitAll()
                 .and()
                 .authorizeRequests()
                 .antMatchers(DEFAULT_EXCLUDE_URL_PATTERNS.toArray(new String[0])).permitAll()
