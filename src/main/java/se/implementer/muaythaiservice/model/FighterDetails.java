@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Value;
 import se.implementer.muaythaiservice.util.FighterUtil;
 
+import static se.implementer.muaythaiservice.model.FighterStatus.mapToFighterStatus;
+
 @Value
 @Builder
 @AllArgsConstructor
@@ -56,7 +58,7 @@ public class FighterDetails {
 
     int age;
 
-    String fighterStatus;
+    FighterStatus status;
 
     public static FighterDetails mapToFighterDetails(Fighter fighter) {
 
@@ -85,7 +87,7 @@ public class FighterDetails {
                 .ranking(fighter.getRanking())
                 .primaryWeightClass(fighter.getPrimaryWeightClass())
                 .age(FighterUtil.calculateAge(fighter.getBirthDate()))
-                .fighterStatus(fighter.getFighterStatus())
+                .status(mapToFighterStatus(fighter.getFighterStatus()))
                 .build();
     }
 }
