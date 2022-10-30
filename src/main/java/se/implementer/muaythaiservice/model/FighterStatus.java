@@ -4,11 +4,11 @@ import java.util.Arrays;
 
 public enum FighterStatus {
 
-    ACTIVE("Figher is active"),
-    INACTIVE("Figher is inactive due to other reasons"),
-    RETIRED("Figher is retired"),
-    INJURED("Figher is injured"),
-    RECOVERING("Figher is recovering after recent fight");
+    ACTIVE("Fighter is active"),
+    INACTIVE("Fighter is inactive due to other reasons"),
+    RETIRED("Fighter is retired"),
+    INJURED("Fighter is injured"),
+    RECOVERING("Fighter is recovering after recent fight");
 
     private String statusDescription;
 

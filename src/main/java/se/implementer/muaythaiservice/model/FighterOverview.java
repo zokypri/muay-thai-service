@@ -6,6 +6,7 @@ import lombok.Value;
 import se.implementer.muaythaiservice.util.FighterUtil;
 
 import static se.implementer.muaythaiservice.model.FighterStatus.mapToFighterStatus;
+import static se.implementer.muaythaiservice.model.Gender.mapToGender;
 
 @Value
 @Builder
@@ -20,7 +21,7 @@ public class FighterOverview {
 
     String showName;
 
-    String gender;
+    Gender gender;
 
     int totalFights;
 
@@ -42,7 +43,7 @@ public class FighterOverview {
                 .firstName(fighter.getFirstName())
                 .lastName(fighter.getLastName())
                 .showName(fighter.getStageName())
-                .gender(fighter.getGender())
+                .gender(mapToGender(fighter.getGender()))
                 .totalFights(fighter.getTotalFights())
                 .wins(fighter.getWins())
                 .losses(fighter.getLosses())
