@@ -9,6 +9,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Entity
 @Table(name = "FIGHTERS")
 @Builder
@@ -58,7 +60,7 @@ public class Fighter {
     int lossesKo;
 
     @Column(name = "LOSSES_DECISION")
-    int lossesDecition;
+    int lossesDecision;
 
     @Column(name = "COUNTRY_ORIGIN")
     String countryOrigin;
@@ -82,5 +84,5 @@ public class Fighter {
     String primaryWeightClass;
 
     @Column(name = "BIRTH_DATE")
-    String birthDate;
+    LocalDate birthDate;
 }

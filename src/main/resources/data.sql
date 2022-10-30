@@ -1,7 +1,7 @@
 
 INSERT INTO FIGHTERS (FIGHTER_ID, FIRST_NAME, LAST_NAME, STAGE_NAME, HEIGHT_CM, WINS, LOSSES, DRAWS, NO_CONTESTS, WINS_KO, WINS_DECISION, LOSSES_KO, LOSSES_DECISION,
                       COUNTRY_ORIGIN, COUNTRY_LIVING, CITY, CLUB, FIGHT_ORG, RANKING, PRIMARY_WEIGHT, BIRTH_DATE, GENDER)
-VALUES (8888, 'Smilla', 'Sundell', 'The Storm', 176, 50, 0, 0, 0, 30, 20, 0, 0, 'Sweden', 'Thailand' ,'Pattaya', 'Fairtex' ,'One Championship', 'Champ', '59', DATE '2004-10-31', 'F'),
+VALUES (8888, 'Smilla', 'Sundell', 'The Storm', 176, 50, 0, 0, 0, 30, 20, 0, 0, 'Sweden', 'Thailand' ,'Pattaya', 'Fairtex' ,'One Championship', 'Champ', '59', DATE '2004-10-30', 'F'),
        (8889, 'Sarel', 'De-jong', 'The Hunter', 174, 40, 1, 1, 0, 22, 18, 0, 1, 'Holland', 'Holland' ,'Groningen', 'Team van der Giessen' ,'Enfusion', 'Champ', '59', DATE '2022-12-31', 'F'),
        (8890, 'Barbara', 'Aquilera', null, 172, 60, 2, 1, 0, 23, 37, 0, 2, 'Brazil', 'Thailand' ,'Phuket', 'Phuket fight club', 'SuperChamp', '3', '59', DATE '2022-12-31', 'F');
 

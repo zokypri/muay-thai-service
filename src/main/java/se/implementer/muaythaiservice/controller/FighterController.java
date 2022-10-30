@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import se.implementer.muaythaiservice.model.Fighter;
+import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.service.FighterService;
 
 @Slf4j
@@ -31,7 +31,7 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/details/{fighterId}")
-    public Fighter getFighterDetails(@PathVariable int fighterId) {
+    public FighterDetails getFighterDetails(@PathVariable int fighterId) {
         return fighterService.getFighterDetails(fighterId);
     }
 

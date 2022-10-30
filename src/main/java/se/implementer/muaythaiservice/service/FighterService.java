@@ -4,7 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-import se.implementer.muaythaiservice.model.Fighter;
+import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.repository.FighterRepository;
 
 @Service
@@ -17,10 +17,10 @@ public class FighterService {
         this.fighterRepository = fighterRepository;
     }
 
-    public Fighter getFighterDetails(int fighterId) {
+    public FighterDetails getFighterDetails(int fighterId) {
         var fighterOptional = fighterRepository.findByFighterId(fighterId);
         if (fighterOptional.isPresent()) {
-            return fighterOptional.get();
+            return FighterDetails.mapToFighterDetails(fighterOptional.get());
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fighter with id not found");
     }
