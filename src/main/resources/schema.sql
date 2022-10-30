@@ -6,6 +6,7 @@ CREATE TABLE FIGHTERS
     STAGE_NAME      VARCHAR2(30),
     HEIGHT_CM       VARCHAR2(30) not null,
     GENDER          VARCHAR2(30) not null,
+    TOTAL_FIGHTS    NUMBER not null,
     WINS            NUMBER not null,
     LOSSES          NUMBER not null,
     DRAWS           NUMBER not null,
@@ -21,7 +22,8 @@ CREATE TABLE FIGHTERS
     FIGHT_ORG       VARCHAR2(30) not null,
     RANKING         VARCHAR2(30) not null,
     PRIMARY_WEIGHT  VARCHAR2(30) not null,
-    BIRTH_DATE      DATE
+    BIRTH_DATE      DATE,
+    FIGHTER_STATUS  VARCHAR2(30) not null
 );
 
 CREATE TABLE FIGHT_HISTORY
@@ -36,7 +38,7 @@ CREATE TABLE FIGHT_HISTORY
     LOCATION        VARCHAR2(30) not null,
     ARENA           VARCHAR2(30) not null,
     WEIGHT          VARCHAR2(30) not null,
-    ORGANISATION    VARCHAR2(30) not null,
+    FIGHT_ORG       VARCHAR2(30) not null,
     foreign key (FIGHTER_ID) references FIGHTERS(FIGHTER_ID)
 );
 
@@ -48,7 +50,7 @@ CREATE TABLE NEXT_SCHEDULED_FIGHT
     LOCATION        VARCHAR2(30) not null,
     ARENA           VARCHAR2(30) not null,
     WEIGHT          VARCHAR2(30) not null,
-    ORGANISATION    VARCHAR2(30) not null,
+    FIGHT_ORG       VARCHAR2(30) not null,
     foreign key (FIGHTER_ID) references FIGHTERS(FIGHTER_ID)
 );
 

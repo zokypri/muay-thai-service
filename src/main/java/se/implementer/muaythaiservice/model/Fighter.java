@@ -38,6 +38,9 @@ public class Fighter {
     @Column(name = "GENDER")
     String gender;
 
+    @Column(name = "TOTAL_FIGHTS")
+    int totalFights;
+
     @Column(name = "WINS")
     int wins;
 
@@ -85,4 +88,8 @@ public class Fighter {
 
     @Column(name = "BIRTH_DATE")
     LocalDate birthDate;
+
+    @Column(name = "FIGHTER_STATUS")
+    String fighterStatus;
+
 }
