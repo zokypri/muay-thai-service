@@ -3,7 +3,10 @@ package se.implementer.muaythaiservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
+import se.implementer.muaythaiservice.model.db.Fighter;
 import se.implementer.muaythaiservice.util.FighterUtil;
+
+import java.util.List;
 
 import static se.implementer.muaythaiservice.model.FighterStatus.mapToFighterStatus;
 import static se.implementer.muaythaiservice.model.Gender.mapToGender;
@@ -14,6 +17,8 @@ import static se.implementer.muaythaiservice.model.Gender.mapToGender;
 public class FighterDetails {
 
     int fighterId;
+
+    List<FightInfoDetails> fightsInfo;
 
     String firstName;
 
@@ -66,6 +71,7 @@ public class FighterDetails {
         return FighterDetails
                 .builder()
                 .fighterId(fighter.getFighterId())
+                .fightsInfo(FightInfoDetails.mapToFightsInfoDetails(fighter.getFightsInfo()))
                 .firstName(fighter.getFirstName())
                 .lastName(fighter.getLastName())
                 .showName(fighter.getStageName())

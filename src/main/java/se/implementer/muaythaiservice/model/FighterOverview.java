@@ -3,6 +3,7 @@ package se.implementer.muaythaiservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Value;
+import se.implementer.muaythaiservice.model.db.Fighter;
 import se.implementer.muaythaiservice.util.FighterUtil;
 
 import static se.implementer.muaythaiservice.model.FighterStatus.mapToFighterStatus;

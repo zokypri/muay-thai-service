@@ -1,8 +1,11 @@
-package se.implementer.muaythaiservice.model;
+package se.implementer.muaythaiservice.model.db;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -10,6 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Table(name = "FIGHTERS")
@@ -22,6 +26,9 @@ public class Fighter {
     @Id
     @Column(name = "FIGHTER_ID", unique = true)
     int fighterId;
+
+    @OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<FightInfo> fightsInfo;
 
     @Column(name = "FIRST_NAME")
     String firstName;
