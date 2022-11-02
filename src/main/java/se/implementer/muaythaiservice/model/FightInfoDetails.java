@@ -15,6 +15,8 @@ public class FightInfoDetails {
 
     int fightId;
 
+    int fighterId;
+
     String result;
 
     int opponentId;
@@ -46,6 +48,7 @@ public class FightInfoDetails {
         return FightInfoDetails
                 .builder()
                 .fightId(fightInfo.getFightId())
+                .fighterId(fightInfo.getFighterId())
                 .result(fightInfo.getResult())
                 .opponentId(fightInfo.getOpponentId())
                 .roundKo(fightInfo.getRoundKo())

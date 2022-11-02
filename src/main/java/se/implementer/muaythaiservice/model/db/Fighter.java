@@ -27,7 +27,8 @@ public class Fighter {
     @Column(name = "FIGHTER_ID", unique = true)
     int fighterId;
 
-    @OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    //TODO change to Lazy if fightsInfo data is not needed in the REST response
+    @OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<FightInfo> fightsInfo;
 
     @Column(name = "FIRST_NAME")
