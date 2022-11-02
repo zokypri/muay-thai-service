@@ -45,7 +45,7 @@ CREATE TABLE FIGHT_INFO
 
 CREATE TABLE FIGHT_ORGANISATIONS
 (
-    ID              NUMBER primary key,
+    ORG_ID          NUMBER primary key,
     CITY            VARCHAR2(30) not null,
     ARENA           VARCHAR2(30) not null,
     COUNTRY         VARCHAR2(30) not null,
