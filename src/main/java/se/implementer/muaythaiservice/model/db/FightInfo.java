@@ -1,5 +1,6 @@
 package se.implementer.muaythaiservice.model.db;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -30,6 +31,7 @@ public class FightInfo {
     int fightId;
 
     //TODO change to Eager if response does not have all data when using history URL
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FIGHTER_ID")
     Fighter fighter;

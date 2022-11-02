@@ -8,6 +8,8 @@ import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.model.FighterOverview;
 import se.implementer.muaythaiservice.model.FighterStatus;
 import se.implementer.muaythaiservice.model.Gender;
+import se.implementer.muaythaiservice.model.db.FightInfo;
+import se.implementer.muaythaiservice.repository.FightInfoRepository;
 import se.implementer.muaythaiservice.repository.FighterRepository;
 
 import java.util.List;
@@ -18,8 +20,12 @@ public class FighterService {
 
     private final FighterRepository fighterRepository;
 
-    public FighterService(FighterRepository fighterRepository) {
+    private final FightInfoRepository fightInfoRepository;
+
+    public FighterService(FighterRepository fighterRepository, FightInfoRepository fightInfoRepository) {
+
         this.fighterRepository = fighterRepository;
+        this.fightInfoRepository = fightInfoRepository;
     }
 
     public FighterDetails getFighterDetails(int fighterId) {
@@ -44,5 +50,10 @@ public class FighterService {
                 .stream()
                 .map(FighterOverview::mapToFighterOverview)
                 .toList();
+    }
+
+    public List<FightInfo> getFighterHistory(int fighterId) {
+
+        return fightInfoRepository.findAllByFighterIdAndResultIsNotNull(fighterId);
     }
 }

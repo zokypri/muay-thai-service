@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.model.FighterOverview;
 import se.implementer.muaythaiservice.model.Gender;
+import se.implementer.muaythaiservice.model.db.FightInfo;
 import se.implementer.muaythaiservice.service.FighterService;
 
 import java.util.List;
@@ -61,6 +62,19 @@ public class FighterController {
     @GetMapping("/active/{gender}")
     public List<FighterOverview> getAllActiveFightersByGender(@PathVariable Gender gender) {
         return fighterService.getAllActiveFightersByGender(gender);
+    }
+
+    @Operation(summary = " Get overview about one fighter")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fighter found"),
+            @ApiResponse(responseCode = "404", description = "Fighter not found",
+                    content = @Content)
+    })
+    @SecurityRequirement(name ="Bearer Auth")
+    @GetMapping("/fighter/history/{fighterId}")
+    public List<FightInfo> getFighterHistory(@PathVariable int fighterId) {
+
+        return fighterService.getFighterHistory(fighterId);
     }
 
 }
