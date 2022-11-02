@@ -21,7 +21,7 @@ public class FightInfoDetails {
 
     int opponentId;
 
-    int roundKo;
+    String roundKo;
 
     int fightNumber;
 

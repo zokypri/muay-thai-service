@@ -66,8 +66,8 @@ public class FighterController {
 
     @Operation(summary = " Get overview about one fighter")
     @ApiResponses(value = {
-            @ApiResponse(responseCode = "200", description = "Fighter found"),
-            @ApiResponse(responseCode = "404", description = "Fighter not found",
+            @ApiResponse(responseCode = "200", description = "Fighter history found"),
+            @ApiResponse(responseCode = "404", description = "Fighter history not found",
                     content = @Content)
     })
     @SecurityRequirement(name ="Bearer Auth")

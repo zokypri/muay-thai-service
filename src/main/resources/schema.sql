@@ -33,7 +33,7 @@ CREATE TABLE FIGHT_INFO
     OPPONENT_ID     NUMBER,
     FIGHT_NUMBER    NUMBER,
     RESULT          VARCHAR2(30),
-    ROUND_KO        NUMBER,
+    ROUND_KO        VARCHAR2(30),
     KO_TIME         VARCHAR2(30),
     FIGHT_DAY       DATE,
     LOCATION        VARCHAR2(30) not null,

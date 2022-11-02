@@ -46,7 +46,7 @@ public class FightInfo {
     int opponentId;
 
     @Column(name = "ROUND_KO")
-    int roundKo;
+    String roundKo;
 
     @Column(name = "FIGHT_NUMBER")
     int fightNumber;
