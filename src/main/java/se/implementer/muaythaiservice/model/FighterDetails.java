@@ -6,6 +6,7 @@ import lombok.Value;
 import se.implementer.muaythaiservice.model.db.Fighter;
 import se.implementer.muaythaiservice.util.FighterUtil;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static se.implementer.muaythaiservice.model.FighterStatus.mapToFighterStatus;
@@ -65,6 +66,8 @@ public class FighterDetails {
     int age;
 
     FighterStatus status;
+
+    LocalDate birthDate;
 
     public static FighterDetails mapToFighterDetails(Fighter fighter) {
 

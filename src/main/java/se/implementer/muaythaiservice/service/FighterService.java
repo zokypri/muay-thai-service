@@ -4,6 +4,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
+import se.implementer.muaythaiservice.model.FighterDto;
+import se.implementer.muaythaiservice.model.db.Fighter;
 import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.model.FighterOverview;
 import se.implementer.muaythaiservice.model.FighterStatus;
@@ -55,5 +57,11 @@ public class FighterService {
     public List<FightInfo> getFighterHistory(int fighterId) {
 
         return fightInfoRepository.findAllByFighterIdAndResultIsNotNull(fighterId);
+    }
+
+    public void addFighter(FighterDto fighterDto) {
+        log.info("adding new fighter {}", fighterDto.getFirstName());
+        var fighter = fighterRepository.save(Fighter.mapToFighter(fighterDto));
+        log.info("New fighter added {}", fighter.getFighterId());
     }
 }

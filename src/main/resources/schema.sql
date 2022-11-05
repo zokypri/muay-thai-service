@@ -1,6 +1,7 @@
+CREATE SEQUENCE FIGHTER_SEQ START WITH 1 INCREMENT BY 1;
 CREATE TABLE FIGHTERS
 (
-    FIGHTER_ID      NUMBER primary key,
+    FIGHTER_ID      NUMBER default FIGHTER_SEQ.nextval primary key not null,
     FIRST_NAME      VARCHAR2(30) not null,
     LAST_NAME       VARCHAR2(30) not null,
     STAGE_NAME      VARCHAR2(30),
@@ -20,8 +21,8 @@ CREATE TABLE FIGHTERS
     CITY            VARCHAR2(30) not null,
     CLUB            VARCHAR2(30) not null,
     FIGHT_ORG       VARCHAR2(30) not null,
-    RANKING         VARCHAR2(30)  ,
-    PRIMARY_WEIGHT  VARCHAR2(30) not null,
+    RANKING         VARCHAR2(30),
+    PRIMARY_WEIGHT  VARCHAR2(30),
     BIRTH_DATE      DATE,
     FIGHTER_STATUS  VARCHAR2(30) not null
 );
