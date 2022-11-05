@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import se.implementer.muaythaiservice.model.FightInfoDto;
 import se.implementer.muaythaiservice.model.FighterDetails;
 import se.implementer.muaythaiservice.model.FighterDto;
 import se.implementer.muaythaiservice.model.FighterOverview;
@@ -91,6 +92,19 @@ public class FighterController {
     public void addFighter(@RequestBody FighterDto fighter) {
 
         fighterService.addFighter(fighter);
+    }
+
+    @Operation(summary = " Add new fight")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Fight added"),
+            @ApiResponse(responseCode = "404", description = "Fight not added",
+                    content = @Content)
+    })
+    @SecurityRequirement(name ="Bearer Auth")
+    @PostMapping("/fight")
+    public void addFight(@RequestBody FightInfoDto fightInfoDto) {
+
+        fighterService.addFight(fightInfoDto);
     }
 
 }
