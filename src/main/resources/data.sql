@@ -10,7 +10,7 @@ INSERT INTO FIGHT_INFO(FIGHT_ID, FIGHTER_ID, RESULT, OPPONENT_ID, ROUND_KO, FIGH
 VALUES (334, 8888, 'WIN', 33, '4', 1, '1,55', DATE '2020-12-31', 'Koh Samui', 'SAMUI_INTERNATIONAL_STADIUM', 57, 'SAMUI INTERNATIONAL STADIUM'),
        (337, 8888, 'WIN', 99, '4', 2, '1,56', DATE '2021-12-31', 'Bangkok', 'BANGKOK_ARENA', 57, 'SuperChamp'),
        (338, 8888, 'WIN', 2, '4', 3, '1,57', DATE '2022-06-22', 'Singapore', 'SINGI_STADIUM', 57, 'One Championship'),
-       (339, 8888,  null, 2, null, 4, null, DATE '2022-12-31', 'Singapore', 'SINGI_STADIUM', 57, 'One Championship'),
+       (339, 8888, 'FUTURE_FIGHT', 2, null, 4, null, DATE '2022-12-31', 'Singapore', 'SINGI_STADIUM', 57, 'One Championship'),
        (335, 8889, 'WIN', 34, '5', 1, null, DATE '2022-12-31', 'Amsterdam', 'AMSTERDAM_STADIUM' ,60,  'Enfusion'),
        (336, 8890, 'WIN', 35, '2', 1, '1,55', DATE '2022-12-31',  'Phuket', 'PHUKET_BOXING_STADIUM', 58,  'SuperChamp');
 

@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface FightInfoRepository extends CrudRepository<FightInfo, Integer> {
 
-    List<FightInfo> findAllByFighterIdAndResultIsNotNull(int fighterId);
+    List<FightInfo> findAllByFighterId(int fighterId);
 }

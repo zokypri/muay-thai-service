@@ -13,7 +13,7 @@ public class FightInfoDto {
 
     int fighterId;
 
-    String result;
+    FightResult result;
 
     int opponentId;
 

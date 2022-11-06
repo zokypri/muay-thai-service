@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 import se.implementer.muaythaiservice.model.FightInfoDto;
+import se.implementer.muaythaiservice.model.FightResult;
 import se.implementer.muaythaiservice.model.FighterDto;
 import se.implementer.muaythaiservice.model.db.Fighter;
 import se.implementer.muaythaiservice.model.FighterDetails;
@@ -57,7 +58,11 @@ public class FighterService {
 
     public List<FightInfo> getFighterHistory(int fighterId) {
 
-        return fightInfoRepository.findAllByFighterIdAndResultIsNotNull(fighterId);
+        var fights = fightInfoRepository.findAllByFighterId(fighterId);
+        return fights
+                .stream()
+                .filter(fight -> !FightResult.FUTURE_FIGHT.name().equals(fight.getResult()))
+                .toList();
     }
 
     public void addFighter(FighterDto fighterDto) {
