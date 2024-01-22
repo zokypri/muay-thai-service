@@ -21,7 +21,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(DEFAULT_EXCLUDE_URL_PATTERNS.toArray(new String[0])).permitAll()
-                .and().authorizeRequests().antMatchers(HttpMethod.POST,"/v1/authenticate/register/**").permitAll()
                 .and().authorizeRequests()
                 .anyRequest().authenticated();
     }
