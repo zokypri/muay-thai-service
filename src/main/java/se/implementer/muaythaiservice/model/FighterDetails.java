@@ -39,29 +39,11 @@ public class FighterDetails {
 
     int draws;
 
-    int noContest;
-
-    int winsKo;
-
-    int winsDecision;
-
-    int lossesKo;
-
-    int lossesDecision;
-
     String countryOrigin;
 
     String countryLiving;
 
-    String city;
-
     String club;
-
-    String fightOrg;
-
-    String ranking;
-
-    String primaryWeightClass;
 
     int age;
 
@@ -84,20 +66,12 @@ public class FighterDetails {
                 .wins(fighter.getWins())
                 .losses(fighter.getLosses())
                 .draws(fighter.getDraws())
-                .noContest(fighter.getNoContests())
-                .winsKo(fighter.getWinsKo())
-                .winsDecision(fighter.getWinsDecision())
-                .lossesKo(fighter.getLossesKo())
-                .lossesDecision(fighter.getLossesDecision())
                 .countryOrigin(fighter.getCountryOrigin())
                 .countryLiving(fighter.getCountryLiving())
-                .city(fighter.getCity())
                 .club(fighter.getClub())
-                .fightOrg(fighter.getFightOrg())
-                .ranking(fighter.getRanking())
-                .primaryWeightClass(fighter.getPrimaryWeightClass())
                 .age(FighterUtil.calculateAge(fighter.getBirthDate()))
                 .status(mapToFighterStatus(fighter.getFighterStatus()))
+                .birthDate(fighter.getBirthDate())
                 .build();
     }
 }

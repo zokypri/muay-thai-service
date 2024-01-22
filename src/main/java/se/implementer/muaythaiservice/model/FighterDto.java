@@ -29,29 +29,11 @@ public class FighterDto {
 
     int draws;
 
-    int noContest;
-
-    int winsKo;
-
-    int winsDecision;
-
-    int lossesKo;
-
-    int lossesDecision;
-
     String countryOrigin;
 
     String countryLiving;
 
-    String city;
-
     String club;
-
-    String fightOrg;
-
-    String ranking;
-
-    String primaryWeightClass;
 
     FighterStatus status;
 

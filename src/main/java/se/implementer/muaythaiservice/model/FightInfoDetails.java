@@ -21,12 +21,6 @@ public class FightInfoDetails {
 
     int opponentId;
 
-    String roundKo;
-
-    int fightNumber;
-
-    String koTime;
-
     LocalDate fightDay;
 
     String location;
@@ -51,9 +45,6 @@ public class FightInfoDetails {
                 .fighterId(fightInfo.getFighterId())
                 .result(FightResult.mapToFightResult(fightInfo.getResult()))
                 .opponentId(fightInfo.getOpponentId())
-                .roundKo(fightInfo.getRoundKo())
-                .fightNumber(fightInfo.getFightNumber())
-                .koTime(fightInfo.getKoTime())
                 .fightDay(fightInfo.getFightDay())
                 .location(fightInfo.getLocation())
                 .arena(fightInfo.getArena())

@@ -50,15 +50,6 @@ public class FightInfo {
     @Column(name = "OPPONENT_ID")
     int opponentId;
 
-    @Column(name = "ROUND_KO")
-    String roundKo;
-
-    @Column(name = "FIGHT_NUMBER")
-    int fightNumber;
-
-    @Column(name = "KO_TIME")
-    String koTime;
-
     @Column(name = "FIGHT_DAY")
     LocalDate fightDay;
 
@@ -80,9 +71,6 @@ public class FightInfo {
                 .fighterId(fightInfoDto.getFighterId())
                 .result(fightInfoDto.getResult().name())
                 .opponentId(fightInfoDto.getOpponentId())
-                .roundKo(fightInfoDto.getRoundKo())
-                .fightNumber(fightInfoDto.getFightNumber())
-                .koTime(fightInfoDto.getKoTime())
                 .fightDay(fightInfoDto.getFightDay())
                 .location(fightInfoDto.getLocation())
                 .arena(fightInfoDto.getArena())

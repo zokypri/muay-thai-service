@@ -17,12 +17,6 @@ public class FightInfoDto {
 
     int opponentId;
 
-    String roundKo;
-
-    int fightNumber;
-
-    String koTime;
-
     LocalDate fightDay;
 
     String location;

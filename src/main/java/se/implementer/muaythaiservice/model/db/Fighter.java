@@ -21,7 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Entity
-@Table(name = "FIGHTERS")
+@Table(name = "FIGHTER")
 @Builder
 @Getter
 @NoArgsConstructor
@@ -69,21 +69,6 @@ public class Fighter {
     @Column(name = "DRAWS")
     int draws;
 
-    @Column(name = "NO_CONTESTS")
-    int noContests;
-
-    @Column(name = "WINS_KO")
-    int winsKo;
-
-    @Column(name = "WINS_DECISION")
-    int winsDecision;
-
-    @Column(name = "LOSSES_KO")
-    int lossesKo;
-
-    @Column(name = "LOSSES_DECISION")
-    int lossesDecision;
-
     @NotNull
     @Column(name = "COUNTRY_ORIGIN")
     String countryOrigin;
@@ -93,22 +78,8 @@ public class Fighter {
     String countryLiving;
 
     @NotNull
-    @Column(name = "CITY")
-    String city;
-
-    @NotNull
     @Column(name = "CLUB")
     String club;
-
-    @NotNull
-    @Column(name = "FIGHT_ORG")
-    String fightOrg;
-
-    @Column(name = "RANKING")
-    String ranking;
-
-    @Column(name = "PRIMARY_WEIGHT")
-    String primaryWeightClass;
 
     @Column(name = "BIRTH_DATE")
     @NotNull
@@ -130,16 +101,9 @@ public class Fighter {
                 .wins(fighter.getWins())
                 .losses(fighter.getLosses())
                 .draws(fighter.getDraws())
-                .noContests(fighter.getNoContest())
-                .winsKo(fighter.getWinsKo())
-                .winsDecision(fighter.getWinsDecision())
-                .lossesKo(fighter.getLossesKo())
-                .lossesDecision(fighter.getLossesDecision())
                 .countryLiving(fighter.getCountryLiving())
                 .countryOrigin(fighter.getCountryOrigin())
-                .city(fighter.getCity())
                 .club(fighter.getClub())
-                .fightOrg(fighter.getFightOrg())
                 .fighterStatus(fighter.getStatus().name())
                 .birthDate(fighter.getBirthDate())
                 .build();

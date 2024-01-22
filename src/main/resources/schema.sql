@@ -1,5 +1,5 @@
 CREATE SEQUENCE FIGHTER_SEQ START WITH 1 INCREMENT BY 1;
-CREATE TABLE FIGHTERS
+CREATE TABLE FIGHTER
 (
     FIGHTER_ID      NUMBER default FIGHTER_SEQ.nextval primary key not null,
     FIRST_NAME      VARCHAR2(30) not null,
@@ -11,18 +11,9 @@ CREATE TABLE FIGHTERS
     WINS            NUMBER  ,
     LOSSES          NUMBER  ,
     DRAWS           NUMBER  ,
-    NO_CONTESTS     NUMBER  ,
-    WINS_KO         NUMBER  ,
-    WINS_DECISION   NUMBER  ,
-    LOSSES_KO       NUMBER  ,
-    LOSSES_DECISION NUMBER  ,
     COUNTRY_ORIGIN  VARCHAR2(30) not null,
     COUNTRY_LIVING  VARCHAR2(30) not null,
-    CITY            VARCHAR2(30) not null,
     CLUB            VARCHAR2(30) not null,
-    FIGHT_ORG       VARCHAR2(30) not null,
-    RANKING         VARCHAR2(30),
-    PRIMARY_WEIGHT  VARCHAR2(30),
     BIRTH_DATE      DATE,
     FIGHTER_STATUS  VARCHAR2(30) not null
 );
@@ -33,16 +24,13 @@ CREATE TABLE FIGHT_INFO
     FIGHT_ID        NUMBER default FIGHT_SEQ.nextval primary key not null,
     FIGHTER_ID      NUMBER,
     OPPONENT_ID     NUMBER,
-    FIGHT_NUMBER    NUMBER,
     RESULT          VARCHAR2(30) NOT NULL,
-    ROUND_KO        VARCHAR2(30),
-    KO_TIME         VARCHAR2(30),
     FIGHT_DAY       DATE,
     LOCATION        VARCHAR2(30) not null,
     ARENA           VARCHAR2(30) not null,
     WEIGHT          VARCHAR2(30) not null,
     FIGHT_ORG       VARCHAR2(30) not null,
-    foreign key (FIGHTER_ID) references FIGHTERS(FIGHTER_ID)
+    foreign key (FIGHTER_ID) references FIGHTER(FIGHTER_ID)
 );
 
 CREATE TABLE FIGHT_ORGANISATIONS
