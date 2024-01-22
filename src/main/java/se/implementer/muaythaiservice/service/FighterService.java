@@ -3,6 +3,7 @@ package se.implementer.muaythaiservice.service;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 import se.implementer.muaythaiservice.model.FightInfoDto;
 import se.implementer.muaythaiservice.model.FightResult;
@@ -65,17 +66,21 @@ public class FighterService {
                 .toList();
     }
 
+    @Transactional
     public void addFighter(FighterDto fighterDto) {
         log.info("adding new fighter {}", fighterDto.getFirstName());
         var fighter = fighterRepository.save(Fighter.mapToFighter(fighterDto));
-        log.info("New fighter added {}", fighter.getFighterId());
+        log.info("New fighter with id: {} added ", fighter.getFighterId());
+        //TODO add a response object
     }
 
+    @Transactional
     public void addFight(FightInfoDto fightInfoDto) {
-        log.info("adding new fight for fighter {}", fightInfoDto.getFighterId());
-
+        log.info("adding new fight for fighter with id: {}", fightInfoDto.getFighterId());
         var fightInfo = fightInfoRepository.save(FightInfo.mapToFightInfo(fightInfoDto));
-        log.info("added new fight with id {}", fightInfo.getFightId());
-
+        //TODO when a fight is added the fighters stats must also be updated
+        //TODO add a response object
+        //TODO handle exception
+        log.info("added new fight with fight id: {} for fighter with fighter id: {}", fightInfo.getFightId(), fightInfo.getFighterId());
     }
 }
