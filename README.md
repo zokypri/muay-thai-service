@@ -13,6 +13,7 @@ http://localhost:8088/muay-thai-service/swagger-ui/index.html#/
 The service is still under development and there are quite a few things that need to be improved
 
     1: Unit and Component tests
+    2: Add a kafka connector to listen to the DB table fighter and publish an event when a new fighter is added
     3: MDC configurations for Log Id tracebality
     4: Configuring Spring Security for auth with JWT
 
