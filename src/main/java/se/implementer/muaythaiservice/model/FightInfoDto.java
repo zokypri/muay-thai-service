@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Jacksonized
 public class FightInfoDto {
 
-    int fighterId;
+    Long fighterId;
 
     FightResult result;
 

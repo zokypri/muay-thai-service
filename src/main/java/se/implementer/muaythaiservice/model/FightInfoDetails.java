@@ -13,9 +13,9 @@ import java.util.List;
 @AllArgsConstructor
 public class FightInfoDetails {
 
-    int fightId;
+    Long fightId;
 
-    int fighterId;
+    Long fighterId;
 
     FightResult result;
 

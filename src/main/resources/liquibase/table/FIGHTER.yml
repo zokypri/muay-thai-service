@@ -1,0 +1,84 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: zpri
+      changes:
+        - createTable:
+            tableName: FIGHTER
+            columns:
+              - column:
+                  name: FIGHTER_ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: FIRST_NAME
+                  type:  VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: LAST_NAME
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: STAGE_NAME
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: HEIGHT_CM
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: GENDER
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: TOTAL_FIGHTS
+                  type: INT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: WINS
+                  type: INT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: LOSSES
+                  type: INT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: DRAWS
+                  type: INT
+                  constraints:
+                    nullable: true
+              - column:
+                  name: COUNTRY_ORIGIN
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: COUNTRY_LIVING
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: CLUB
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: true
+              - column:
+                  name: BIRTH_DATE
+                  type: DATE
+                  constraints:
+                    nullable: true
+              - column:
+                  name: FIGHTER_STATUS
+                  type: VARCHAR(30)
+                  constraints:
+                    nullable: false

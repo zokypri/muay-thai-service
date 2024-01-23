@@ -30,9 +30,8 @@ public class Fighter {
 
     @Id
     @Column(name = "FIGHTER_ID", unique = true)
-    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "FIGHTER_SEQ")
-    @SequenceGenerator(name = "FIGHTER_SEQ", sequenceName = "FIGHTER_SEQ", allocationSize = 1)
-    int fighterId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long fighterId;
 
     //TODO change to Lazy if fightsInfo data is not needed in the REST response
     @OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)

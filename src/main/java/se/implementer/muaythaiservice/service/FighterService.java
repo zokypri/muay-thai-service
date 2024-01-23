@@ -33,7 +33,7 @@ public class FighterService {
         this.fightInfoRepository = fightInfoRepository;
     }
 
-    public FighterDetails getFighterDetails(int fighterId) {
+    public FighterDetails getFighterDetails(long fighterId) {
         var fighterOptional = fighterRepository.findByFighterId(fighterId);
         if (fighterOptional.isPresent()) {
             return FighterDetails.mapToFighterDetails(fighterOptional.get());
@@ -41,7 +41,7 @@ public class FighterService {
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fighter with id not found");
     }
 
-    public FighterOverview getFighterOverview(int fighterId) {
+    public FighterOverview getFighterOverview(long fighterId) {
         var fighterOptional = fighterRepository.findByFighterId(fighterId);
         if (fighterOptional.isPresent()) {
             return FighterOverview.mapToFighterOverview(fighterOptional.get());
@@ -57,7 +57,7 @@ public class FighterService {
                 .toList();
     }
 
-    public List<FightInfo> getFighterHistory(int fighterId) {
+    public List<FightInfo> getFighterHistory(long fighterId) {
 
         var fights = fightInfoRepository.findAllByFighterId(fighterId);
         return fights

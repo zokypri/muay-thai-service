@@ -30,9 +30,8 @@ public class FightInfo {
 
     @Id
     @Column(name = "FIGHT_ID")
-    @GeneratedValue (strategy = GenerationType.SEQUENCE, generator = "FIGHT_SEQ")
-    @SequenceGenerator(name = "FIGHT_SEQ", sequenceName = "FIGHT_SEQ", allocationSize = 1)
-    int fightId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long fightId;
 
     //TODO change to Eager if response does not have all data when using history URL
     @JsonIgnore
@@ -41,7 +40,7 @@ public class FightInfo {
     Fighter fighter;
 
     @Column(name = "FIGHTER_ID")
-    int fighterId;
+    Long fighterId;
 
     @NotNull
     @Column(name = "RESULT")

@@ -14,7 +14,7 @@ import static se.implementer.muaythaiservice.model.Gender.mapToGender;
 @AllArgsConstructor
 public class FighterOverview {
 
-    int fighterId;
+    Long fighterId;
 
     String firstName;
 

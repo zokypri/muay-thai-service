@@ -7,7 +7,7 @@ import se.implementer.muaythaiservice.model.db.FightInfo;
 import java.util.List;
 
 @Repository
-public interface FightInfoRepository extends CrudRepository<FightInfo, Integer> {
+public interface FightInfoRepository extends CrudRepository<FightInfo, Long> {
 
-    List<FightInfo> findAllByFighterId(int fighterId);
+    List<FightInfo> findAllByFighterId(long fighterId);
 }

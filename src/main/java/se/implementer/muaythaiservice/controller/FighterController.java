@@ -40,7 +40,7 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/details/{fighterId}")
-    public FighterDetails getFighterDetails(@PathVariable int fighterId) {
+    public FighterDetails getFighterDetails(@PathVariable long fighterId) {
         return fighterService.getFighterDetails(fighterId);
     }
 
@@ -52,7 +52,7 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/overview/{fighterId}")
-    public FighterOverview getFighterOverview(@PathVariable int fighterId) {
+    public FighterOverview getFighterOverview(@PathVariable long fighterId) {
         return fighterService.getFighterOverview(fighterId);
     }
 
@@ -76,7 +76,7 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/history/{fighterId}")
-    public List<FightInfo> getFighterHistory(@PathVariable int fighterId) {
+    public List<FightInfo> getFighterHistory(@PathVariable long fighterId) {
 
         return fighterService.getFighterHistory(fighterId);
     }
