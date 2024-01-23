@@ -13,10 +13,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import se.implementer.muaythaiservice.model.FighterDetails;
-import se.implementer.muaythaiservice.model.FighterDto;
-import se.implementer.muaythaiservice.model.FighterOverview;
-import se.implementer.muaythaiservice.model.Gender;
+import se.implementer.muaythaiservice.model.dto.response.FighterDetails;
+import se.implementer.muaythaiservice.model.dto.request.FighterDto;
+import se.implementer.muaythaiservice.model.dto.response.FighterOverview;
+import se.implementer.muaythaiservice.model.dto.Gender;
+import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.service.FighterService;
 
 import java.util.List;
@@ -78,9 +79,9 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fighter")
-    public void addFighter(@Valid @RequestBody FighterDto fighter) {
+    public Responses.AddFighter addFighter(@Valid @RequestBody FighterDto fighter) {
         log.info("Receiving request to add a new fighter to the DB");
-        fighterService.addFighter(fighter);
+        return fighterService.addFighter(fighter);
     }
 
 }
