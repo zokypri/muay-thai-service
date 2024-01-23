@@ -5,14 +5,13 @@ server:
 
 spring:
   datasource:
-    url: jdbc:h2:mem:test;DB_CLOSE_DELAY=-1
-    username: sa
-    password:
-    driverClassName: org.h2.Driver
+    url: jdbc:mysql://mysql:3306/NewsAgency
+    username: root
+    password: pass
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
-    database-platform: org.hibernate.dialect.Oracle8iDialect
+    database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: none
-  h2:
-    console:
-      enabled: true
+  liquibase:
+    change-log: classpath:liquibase/master/master-changelog.yml

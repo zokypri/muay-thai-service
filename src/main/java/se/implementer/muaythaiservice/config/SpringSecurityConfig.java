@@ -1,7 +1,6 @@
 package se.implementer.muaythaiservice.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
@@ -21,7 +20,6 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(DEFAULT_EXCLUDE_URL_PATTERNS.toArray(new String[0])).permitAll()
-                .and().authorizeRequests().antMatchers(HttpMethod.POST,"/v1/authenticate/register/**").permitAll()
                 .and().authorizeRequests()
                 .anyRequest().authenticated();
     }
