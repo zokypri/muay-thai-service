@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -77,7 +78,7 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fighter")
-    public void addFighter(@RequestBody FighterDto fighter) {
+    public void addFighter(@Valid @RequestBody FighterDto fighter) {
         log.info("Receiving request to add a new fighter to the DB");
         fighterService.addFighter(fighter);
     }
