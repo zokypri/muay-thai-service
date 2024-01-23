@@ -1,4 +1,4 @@
-package se.implementer.muaythaiservice.model;
+package se.implementer.muaythaiservice.model.dto;
 
 import java.util.Arrays;
 

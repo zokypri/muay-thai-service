@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import se.implementer.muaythaiservice.model.FighterDto;
+import se.implementer.muaythaiservice.model.dto.request.FighterDto;
 
 import java.time.LocalDate;
 import java.util.List;

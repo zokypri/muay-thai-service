@@ -1,4 +1,4 @@
-package se.implementer.muaythaiservice.model;
+package se.implementer.muaythaiservice.model.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -7,6 +7,7 @@ import se.implementer.muaythaiservice.model.db.FightInfo;
 
 import java.time.LocalDate;
 import java.util.List;
+import se.implementer.muaythaiservice.model.dto.FightResult;
 
 @Value
 @Builder

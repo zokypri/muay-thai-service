@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import se.implementer.muaythaiservice.model.FightInfoDto;
+import se.implementer.muaythaiservice.model.dto.request.FightInfoDto;
 
 import java.time.LocalDate;
 
@@ -32,9 +32,9 @@ public class FightInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long fightId;
 
-    //TODO change to Eager if response does not have all data when using history URL
+    // TODO change to LAZY if response does not have all data when using history URL
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "FIGHTER_ID", insertable = false, updatable = false)
     Fighter fighter;
 
