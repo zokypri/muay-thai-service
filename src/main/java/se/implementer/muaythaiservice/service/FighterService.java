@@ -26,23 +26,27 @@ public class FighterService {
         this.fighterRepository = fighterRepository;
     }
 
-    public FighterDetails getFighterDetails(long fighterId) {
+    private Fighter getFighterRaw(long fighterId) {
+        log.info("Fetching raw data for fighter with id: {}", fighterId);
         var fighterOptional = fighterRepository.findByFighterId(fighterId);
         if (fighterOptional.isPresent()) {
-            return FighterDetails.mapToFighterDetails(fighterOptional.get());
+            return fighterOptional.get();
         }
         throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fighter with id not found");
+    }
+
+    public FighterDetails getFighterDetails(long fighterId) {
+        log.info("Fetching details for fighter with id: {}", fighterId);
+        return FighterDetails.mapToFighterDetails(getFighterRaw(fighterId));
     }
 
     public FighterOverview getFighterOverview(long fighterId) {
-        var fighterOptional = fighterRepository.findByFighterId(fighterId);
-        if (fighterOptional.isPresent()) {
-            return FighterOverview.mapToFighterOverview(fighterOptional.get());
-        }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fighter with id not found");
+        log.info("Fetching overview for fighter with id: {}", fighterId);
+        return FighterOverview.mapToFighterOverview(getFighterRaw(fighterId));
     }
 
     public List<FighterOverview> getAllActiveFightersByGender(Gender gender) {
+        log.info("Fetching all active fighters of the gender: {}", gender);
         var fighters = fighterRepository.findAllByFighterStatusAndGender(FighterStatus.ACTIVE.name(), gender.name());
         return fighters
                 .stream()

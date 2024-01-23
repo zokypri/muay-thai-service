@@ -37,7 +37,7 @@ public class FightController {
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/history/{fighterId}")
     public List<FightInfo> getFighterHistory(@PathVariable long fighterId) {
-
+        log.info("Receiving request to fetch all fight history for fighter with id: {}", fighterId);
         return fightService.getFighterHistory(fighterId);
     }
 
@@ -50,7 +50,7 @@ public class FightController {
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fight")
     public void addFight(@RequestBody FightInfoDto fightInfoDto) {
-
+        log.info("Receiving request to add a fighter for fighter with id: {}", fightInfoDto.getFighterId());
         fightService.addFight(fightInfoDto);
     }
 
