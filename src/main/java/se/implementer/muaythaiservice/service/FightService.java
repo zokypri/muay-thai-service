@@ -21,7 +21,7 @@ public class FightService {
     }
 
     public List<FightInfo> getFighterHistory(long fighterId) {
-
+        log.info("Fetching all fight history for fighter with id: {}", fighterId);
         var fights = fightInfoRepository.findAllByFighterId(fighterId);
         return fights
                 .stream()
@@ -31,7 +31,7 @@ public class FightService {
 
     @Transactional
     public void addFight(FightInfoDto fightInfoDto) {
-        log.info("adding new fight for fighter with id: {}", fightInfoDto.getFighterId());
+        log.info("Adding new fight for fighter with id: {}", fightInfoDto.getFighterId());
         var fightInfo = fightInfoRepository.save(FightInfo.mapToFightInfo(fightInfoDto));
         //TODO when a fight is added the fighters stats must also be updated
         //TODO add a response object

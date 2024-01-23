@@ -6,6 +6,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import java.util.List;
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -37,7 +38,7 @@ public class FightController {
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/history/{fighterId}")
     public List<FightInfo> getFighterHistory(@PathVariable long fighterId) {
-
+        log.info("Receiving request to fetch all fight history for fighter with id: {}", fighterId);
         return fightService.getFighterHistory(fighterId);
     }
 
@@ -49,8 +50,8 @@ public class FightController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fight")
-    public void addFight(@RequestBody FightInfoDto fightInfoDto) {
-
+    public void addFight(@Valid @RequestBody FightInfoDto fightInfoDto) {
+        log.info("Receiving request to add a fighter for fighter with id: {}", fightInfoDto.getFighterId());
         fightService.addFight(fightInfoDto);
     }
 

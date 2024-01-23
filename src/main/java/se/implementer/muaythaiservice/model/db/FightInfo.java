@@ -39,6 +39,7 @@ public class FightInfo {
     @JoinColumn(name = "FIGHTER_ID", insertable = false, updatable = false)
     Fighter fighter;
 
+    @NotNull
     @Column(name = "FIGHTER_ID")
     Long fighterId;
 

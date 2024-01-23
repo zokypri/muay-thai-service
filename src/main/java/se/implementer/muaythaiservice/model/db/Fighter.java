@@ -81,7 +81,6 @@ public class Fighter {
     String club;
 
     @Column(name = "BIRTH_DATE")
-    @NotNull
     LocalDate birthDate;
 
     @NotNull

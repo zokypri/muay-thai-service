@@ -5,6 +5,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -39,6 +40,7 @@ public class FighterController {
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/details/{fighterId}")
     public FighterDetails getFighterDetails(@PathVariable long fighterId) {
+        log.info("Receiving request to fetch details for fighter with id: {}", fighterId);
         return fighterService.getFighterDetails(fighterId);
     }
 
@@ -51,6 +53,7 @@ public class FighterController {
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/overview/{fighterId}")
     public FighterOverview getFighterOverview(@PathVariable long fighterId) {
+        log.info("Receiving request to fetch overview for fighter with id: {}", fighterId);
         return fighterService.getFighterOverview(fighterId);
     }
 
@@ -63,6 +66,7 @@ public class FighterController {
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/active/{gender}")
     public List<FighterOverview> getAllActiveFightersByGender(@PathVariable Gender gender) {
+        log.info("Receiving request to fetch all active fighters of the gender: {}", gender);
         return fighterService.getAllActiveFightersByGender(gender);
     }
 
@@ -74,8 +78,8 @@ public class FighterController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fighter")
-    public void addFighter(@RequestBody FighterDto fighter) {
-
+    public void addFighter(@Valid @RequestBody FighterDto fighter) {
+        log.info("Receiving request to add a new fighter to the DB");
         fighterService.addFighter(fighter);
     }
 
