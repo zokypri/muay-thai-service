@@ -9,10 +9,7 @@ public class FightsValidator implements ConstraintValidator<FightsValidation, Fi
     @Override
     public boolean isValid(FighterDto fighterDto, ConstraintValidatorContext constraintValidatorContext) {
 
-        if (isNumberOfFightsCorrect(fighterDto)) {
-            return true;
-        }
-        return false;
+        return isNumberOfFightsCorrect(fighterDto);
     }
 
     // This function could be removed but for the sake of readability I added it

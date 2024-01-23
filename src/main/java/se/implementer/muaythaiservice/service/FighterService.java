@@ -32,7 +32,7 @@ public class FighterService {
         if (fighterOptional.isPresent()) {
             return fighterOptional.get();
         }
-        throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Fighter with id not found");
+        throw new ResponseStatusException(HttpStatus.NOT_FOUND, String.format("Fighter with id %s not found", fighterId));
     }
 
     public FighterDetails getFighterDetails(long fighterId) {
