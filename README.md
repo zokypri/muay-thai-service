@@ -13,10 +13,8 @@ http://localhost:8088/muay-thai-service/swagger-ui/index.html#/
 The service is still under development and there are quite a few things that need to be improved
 
     1: Unit and Component tests
-    2: Proper error handling
-    3: More logs
-    4: MDC configurations for Log Id tracebality
-    5: Configuring Spring Security for auth with JWT
+    3: MDC configurations for Log Id tracebality
+    4: Configuring Spring Security for auth with JWT
 
 # Dockerized
 The service is still a standalone service but there are plans to include it in the kafka-docker docker compose project
