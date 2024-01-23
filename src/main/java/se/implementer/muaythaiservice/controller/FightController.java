@@ -14,8 +14,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import se.implementer.muaythaiservice.model.FightInfoDto;
+import se.implementer.muaythaiservice.model.dto.request.FightInfoDto;
 import se.implementer.muaythaiservice.model.db.FightInfo;
+import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.service.FightService;
 
 @Slf4j
@@ -50,9 +51,9 @@ public class FightController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @PostMapping("/fight")
-    public void addFight(@Valid @RequestBody FightInfoDto fightInfoDto) {
+    public Responses.AddFight addFight(@Valid @RequestBody FightInfoDto fightInfoDto) {
         log.info("Receiving request to add a fighter for fighter with id: {}", fightInfoDto.getFighterId());
-        fightService.addFight(fightInfoDto);
+        return fightService.addFight(fightInfoDto);
     }
 
 }

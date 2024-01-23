@@ -1,4 +1,4 @@
-package se.implementer.muaythaiservice.model;
+package se.implementer.muaythaiservice.model.dto.request;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -7,6 +7,8 @@ import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDate;
+import se.implementer.muaythaiservice.model.dto.FighterStatus;
+import se.implementer.muaythaiservice.model.dto.Gender;
 import se.implementer.muaythaiservice.validation.FightsValidation;
 
 @Value
@@ -39,10 +41,8 @@ public class FighterDto {
     @NotBlank
     String countryOrigin;
 
-    @NotBlank
     String countryLiving;
 
-    @NotBlank
     String club;
 
     @NotNull

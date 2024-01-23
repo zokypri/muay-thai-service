@@ -14,7 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import se.implementer.muaythaiservice.model.FighterDto;
+import se.implementer.muaythaiservice.model.dto.request.FighterDto;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -40,7 +40,6 @@ public class Fighter {
     @Column(name = "FIRST_NAME")
     String firstName;
 
-    @NotNull
     @Column(name = "LAST_NAME")
     String lastName;
 
@@ -71,11 +70,9 @@ public class Fighter {
     @Column(name = "COUNTRY_ORIGIN")
     String countryOrigin;
 
-    @NotNull
     @Column(name = "COUNTRY_LIVING")
     String countryLiving;
 
-    @NotNull
     @Column(name = "CLUB")
     String club;
 

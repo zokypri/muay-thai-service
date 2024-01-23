@@ -1,4 +1,4 @@
-package se.implementer.muaythaiservice.model;
+package se.implementer.muaythaiservice.model.dto.request;
 
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
@@ -6,6 +6,7 @@ import lombok.Value;
 import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDate;
+import se.implementer.muaythaiservice.model.dto.FightResult;
 
 @Value
 @Builder

@@ -5,12 +5,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
-import se.implementer.muaythaiservice.model.FighterDto;
+import se.implementer.muaythaiservice.model.dto.request.FighterDto;
 import se.implementer.muaythaiservice.model.db.Fighter;
-import se.implementer.muaythaiservice.model.FighterDetails;
-import se.implementer.muaythaiservice.model.FighterOverview;
-import se.implementer.muaythaiservice.model.FighterStatus;
-import se.implementer.muaythaiservice.model.Gender;
+import se.implementer.muaythaiservice.model.dto.response.FighterDetails;
+import se.implementer.muaythaiservice.model.dto.response.FighterOverview;
+import se.implementer.muaythaiservice.model.dto.FighterStatus;
+import se.implementer.muaythaiservice.model.dto.Gender;
+import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.repository.FighterRepository;
 
 import java.util.List;
@@ -55,10 +56,10 @@ public class FighterService {
     }
 
     @Transactional
-    public void addFighter(FighterDto fighterDto) {
+    public Responses.AddFighter addFighter(FighterDto fighterDto) {
         log.info("adding new fighter {}", fighterDto.getFirstName());
         var fighter = fighterRepository.save(Fighter.mapToFighter(fighterDto));
         log.info("New fighter with id: {} added ", fighter.getFighterId());
-        //TODO add a response object
+        return new Responses.AddFighter(fighter.getFighterId(), fighter.getFirstName(), fighter.getCountryOrigin());
     }
 }
