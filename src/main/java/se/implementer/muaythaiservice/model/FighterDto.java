@@ -39,10 +39,8 @@ public class FighterDto {
     @NotBlank
     String countryOrigin;
 
-    @NotBlank
     String countryLiving;
 
-    @NotBlank
     String club;
 
     @NotNull
