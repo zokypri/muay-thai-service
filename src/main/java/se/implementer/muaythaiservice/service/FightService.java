@@ -24,6 +24,7 @@ public class FightService {
     public List<FightInfo> getFighterHistory(long fighterId) {
         log.info("Fetching all fight history for fighter with id: {}", fighterId);
         var fights = fightInfoRepository.findAllByFighterId(fighterId);
+        // TODO map to DTO for response to not leak internal DB data model
         return fights
                 .stream()
                 .filter(fight -> !FightResult.FUTURE_FIGHT.name().equals(fight.getResult()))

@@ -23,7 +23,6 @@ public class FighterService {
     private final FighterRepository fighterRepository;
 
     public FighterService(FighterRepository fighterRepository) {
-
         this.fighterRepository = fighterRepository;
     }
 
