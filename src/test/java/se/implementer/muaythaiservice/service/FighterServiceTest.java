@@ -79,7 +79,7 @@ public class FighterServiceTest {
         when(fighterRepository.save(any()))
                 .thenReturn(mockFighterRaw(fighterId));
 
-        var actualValue = fighterService.addFighter(mockFighterDto("Jan"));
+        var actualValue = fighterService.addFighter(mockFighterDto());
 
         var expectedValue = new Responses.AddFighter(fighterId, "Jan", "Sweden");
 

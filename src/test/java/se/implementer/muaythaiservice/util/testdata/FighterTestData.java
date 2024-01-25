@@ -11,10 +11,10 @@ import static se.implementer.muaythaiservice.util.testdata.FightsTestData.mockFi
 
 public class FighterTestData {
 
-    public static FighterDto mockFighterDto(String firstName) {
+    public static FighterDto mockFighterDto() {
         return FighterDto
                 .builder()
-                .firstName(firstName)
+                .firstName("Jan")
                 .lastName("Banan")
                 .showName("Banane")
                 .height("177")
@@ -76,6 +76,26 @@ public class FighterTestData {
                 .builder()
                 .fighterId(fighterId)
                 .fightsInfo(mockFightsInfo(fighterId))
+                .firstName("Jan")
+                .lastName("Banan")
+                .stageName("Banane")
+                .height("177")
+                .gender("MALE")
+                .totalFights(10)
+                .wins(7)
+                .losses(2)
+                .draws(1)
+                .countryOrigin("Sweden")
+                .countryLiving("Thailand")
+                .club("Fairtex")
+                .birthDate(LocalDate.now().minusYears(20))
+                .fighterStatus("ACTIVE")
+                .build();
+    }
+
+    public static Fighter mockFighterRawWithoutFighterIdAndFightIfo() {
+        return Fighter
+                .builder()
                 .firstName("Jan")
                 .lastName("Banan")
                 .stageName("Banane")
