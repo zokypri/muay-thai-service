@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import se.implementer.muaythaiservice.model.dto.request.FightInfoDto;
-import se.implementer.muaythaiservice.model.db.FightInfo;
+import se.implementer.muaythaiservice.model.dto.response.FightInfoDetails;
 import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.service.FightService;
 
@@ -38,7 +38,7 @@ public class FightController {
     })
     @SecurityRequirement(name ="Bearer Auth")
     @GetMapping("/fighter/history/{fighterId}")
-    public List<FightInfo> getFighterHistory(@PathVariable long fighterId) {
+    public List<FightInfoDetails> getFighterHistory(@PathVariable long fighterId) {
         log.info("Receiving request to fetch all fight history for fighter with id: {}", fighterId);
         return fightService.getFighterHistory(fighterId);
     }
