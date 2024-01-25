@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 import se.implementer.muaythaiservice.model.dto.request.FightInfoDto;
 import se.implementer.muaythaiservice.model.dto.FightResult;
 import se.implementer.muaythaiservice.model.db.FightInfo;
+import se.implementer.muaythaiservice.model.dto.response.FightInfoDetails;
 import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.repository.FightInfoRepository;
 
@@ -21,12 +22,13 @@ public class FightService {
         this.fightInfoRepository = fightInfoRepository;
     }
 
-    public List<FightInfo> getFighterHistory(long fighterId) {
+    public List<FightInfoDetails> getFighterHistory(long fighterId) {
         log.info("Fetching all fight history for fighter with id: {}", fighterId);
         var fights = fightInfoRepository.findAllByFighterId(fighterId);
         return fights
                 .stream()
                 .filter(fight -> !FightResult.FUTURE_FIGHT.name().equals(fight.getResult()))
+                .map(FightInfoDetails::mapToFightInfoDetails)
                 .toList();
     }
 

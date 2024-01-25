@@ -13,8 +13,10 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import se.implementer.muaythaiservice.model.dto.request.FightInfoDto;
 
 import java.time.LocalDate;
@@ -25,6 +27,8 @@ import java.time.LocalDate;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@EqualsAndHashCode
+@ToString
 public class FightInfo {
 
     @Id
