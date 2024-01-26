@@ -6,19 +6,23 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import org.junit.jupiter.api.Test;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import se.implementer.muaythaiservice.model.dto.FighterStatus;
 import se.implementer.muaythaiservice.model.dto.Gender;
 import se.implementer.muaythaiservice.model.dto.response.FighterDetails;
 import se.implementer.muaythaiservice.model.dto.response.FighterOverview;
+import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.service.FighterService;
 import static se.implementer.muaythaiservice.util.testdata.FighterTestData.mockFighterOverview;
 import se.implementer.muaythaiservice.util.testdata.FightsTestData;
@@ -39,7 +43,9 @@ public class FighterControllerTest {
 
     private static final String fighterOverviewURL = "/fighter/overview/{fighterId}";
 
-    private static final String allActiveFightersByGender = "/active/{gender}";
+    private static final String allActiveFightersByGender = "/fighter/active/{gender}";
+
+    private static final String addFighter = "/fighter";
 
     private static final long fighterID = 11L;
 
@@ -103,6 +109,39 @@ public class FighterControllerTest {
         mockMvc.perform(get(baseUrl + allActiveFightersByGender, Gender.MALE))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void addFighterToDB() throws Exception {
+
+        String filePathRequest = "__files/AddFighterRequest.json";
+        String filePathResponse = "__files/AddFighterResponse.json";
+
+        String requestContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathRequest))
+                                .toURI()
+                )
+        );
+
+        String responseContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathResponse))
+                                .toURI()
+                )
+        );
+
+        when(fighterService.addFighter(any()))
+                .thenReturn(new Responses.AddFighter(5L, "Zoran", "Sweden"));
+
+
+        mockMvc.perform(
+                        post(baseUrl + addFighter)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(requestContent))
+                .andExpect(content().json(responseContent))
+                .andExpect(status().isOk());
+
     }
 
     private static FighterOverview mockSecondFighterOverview(long fighterId) {

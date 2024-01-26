@@ -65,7 +65,7 @@ public class FighterController {
                     content = @Content)
     })
     @SecurityRequirement(name ="Bearer Auth")
-    @GetMapping("/active/{gender}")
+    @GetMapping("/fighter/active/{gender}")
     public List<FighterOverview> getAllActiveFightersByGender(@PathVariable Gender gender) {
         log.info("Receiving request to fetch all active fighters of the gender: {}", gender);
         return fighterService.getAllActiveFightersByGender(gender);
