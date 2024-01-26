@@ -14,12 +14,14 @@ public class FightsTestData {
     private static final String MAX = "MAX";
     private static final String PATT = "Pattaya";
 
+    private static LocalDate FIGHT_DATE = LocalDate.of(2024, 1, 23);
+
     public static FightInfoDto mockFightInfoDto(long fighterId) {
         return FightInfoDto
                 .builder()
                 .fighterId(fighterId)
                 .fightOrg(RAJA)
-                .fightDay(LocalDate.now().minusDays(7))
+                .fightDay(FIGHT_DATE)
                 .result(FightResult.WIN)
                 .arena(RAJA)
                 .location(BKK)
@@ -34,7 +36,7 @@ public class FightsTestData {
                         .fighterId(fighterId)
                         .fightId(1L)
                         .fightOrg(RAJA)
-                        .fightDay(LocalDate.now().minusDays(7))
+                        .fightDay(FIGHT_DATE)
                         .result("WIN")
                         .arena(RAJA)
                         .location(BKK)
@@ -45,7 +47,7 @@ public class FightsTestData {
                         .fighterId(fighterId)
                         .fightId(2L)
                         .fightOrg(MAX)
-                        .fightDay(LocalDate.now().minusDays(17))
+                        .fightDay(FIGHT_DATE.minusDays(5))
                         .result("DRAW")
                         .arena(MAX)
                         .location(PATT)
@@ -61,7 +63,7 @@ public class FightsTestData {
                         .fighterId(fighterId)
                         .fightId(1L)
                         .fightOrg(RAJA)
-                        .fightDay(LocalDate.now().minusDays(7))
+                        .fightDay(FIGHT_DATE)
                         .result(FightResult.WIN)
                         .arena(RAJA)
                         .location(BKK)
@@ -72,7 +74,34 @@ public class FightsTestData {
                         .fighterId(fighterId)
                         .fightId(2L)
                         .fightOrg(MAX)
-                        .fightDay(LocalDate.now().minusDays(17))
+                        .fightDay(FIGHT_DATE.minusDays(5))
+                        .result(FightResult.DRAW)
+                        .arena(MAX)
+                        .location(PATT)
+                        .weight("65")
+                        .build()
+        );
+    }
+
+    public static List<FightInfoDetails> mockFightInfoDetailsFixedDate(long fighterId) {
+        return List.of(
+                FightInfoDetails
+                        .builder()
+                        .fighterId(fighterId)
+                        .fightId(1L)
+                        .fightOrg(RAJA)
+                        .fightDay(FIGHT_DATE)
+                        .result(FightResult.WIN)
+                        .arena(RAJA)
+                        .location(BKK)
+                        .weight("65")
+                        .build(),
+                FightInfoDetails
+                        .builder()
+                        .fighterId(fighterId)
+                        .fightId(2L)
+                        .fightOrg(MAX)
+                        .fightDay(FIGHT_DATE)
                         .result(FightResult.DRAW)
                         .arena(MAX)
                         .location(PATT)
@@ -86,11 +115,13 @@ public class FightsTestData {
                 .builder()
                 .fighterId(fighterId)
                 .fightOrg(RAJA)
-                .fightDay(LocalDate.now().minusDays(7))
+                .fightDay(FIGHT_DATE)
                 .result("WIN")
                 .arena(RAJA)
                 .location(BKK)
                 .weight("65")
                 .build();
     }
+
+
 }

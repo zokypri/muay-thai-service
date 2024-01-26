@@ -1,0 +1,13 @@
+{
+  "fighterId": 11,
+  "firstName": "Jan",
+  "lastName": "Banan",
+  "showName": "Banane",
+  "gender": "MALE",
+  "totalFights": 10,
+  "wins": 7,
+  "losses": 2,
+  "countryOrigin": "Sweden",
+  "age": 20,
+  "status": "ACTIVE"
+}

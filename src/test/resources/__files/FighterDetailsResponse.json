@@ -1,0 +1,42 @@
+{
+  "fighterId": 11,
+  "fightsInfo": [
+    {
+      "fightId": 1,
+      "fighterId": 11,
+      "result": "WIN",
+      "opponentId": 0,
+      "fightDay": "2024-01-23",
+      "location": "BKK",
+      "arena": "RAJA",
+      "weight": "65",
+      "fightOrg": "RAJA"
+    },
+    {
+      "fightId": 2,
+      "fighterId": 11,
+      "result": "DRAW",
+      "opponentId": 0,
+      "fightDay": "2024-01-23",
+      "location": "Pattaya",
+      "arena": "MAX",
+      "weight": "65",
+      "fightOrg": "MAX"
+    }
+  ],
+  "firstName": "Jan",
+  "lastName": "Banan",
+  "showName": "Banane",
+  "height": "177",
+  "gender": "MALE",
+  "totalFights": 10,
+  "wins": 7,
+  "losses": 2,
+  "draws": 1,
+  "countryOrigin": "Sweden",
+  "countryLiving": "Thailand",
+  "club": "Fairtex",
+  "age": 20,
+  "status": "ACTIVE",
+  "birthDate": "2003-01-01"
+}

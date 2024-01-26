@@ -1,0 +1,28 @@
+[
+  {
+    "fighterId": 11,
+    "firstName": "Jan",
+    "lastName": "Banan",
+    "showName": "Banane",
+    "gender": "MALE",
+    "totalFights": 10,
+    "wins":7,
+    "losses": 2,
+    "countryOrigin": "Sweden",
+    "age": 20,
+    "status": "ACTIVE"
+  },
+  {
+    "fighterId": 12,
+    "firstName": "Allan",
+    "lastName": "Allison",
+    "showName": "Al",
+    "gender": "MALE",
+    "totalFights": 10,
+    "wins": 5,
+    "losses": 5,
+    "countryOrigin": "Spain",
+    "age": 30,
+    "status": "ACTIVE"
+  }
+]
