@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import static org.hamcrest.Matchers.containsString;
 import org.junit.jupiter.api.Test;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -54,7 +55,7 @@ public class FighterControllerTest {
     @Test
     void shouldRespondWithFighterDetails() throws Exception {
 
-        String filePathResponse = "__files/FighterDetailsResponse.json";
+        String filePathResponse = "__files/response/FighterDetailsResponse.json";
 
         String responseContent = Files.readString(
                 Paths.get(
@@ -74,7 +75,7 @@ public class FighterControllerTest {
     @Test
     void shouldRespondWithFighterOverview() throws Exception {
 
-        String filePathResponse = "__files/FighterOverviewResponse.json";
+        String filePathResponse = "__files/response/FighterOverviewResponse.json";
 
         String responseContent = Files.readString(
                 Paths.get(
@@ -94,7 +95,7 @@ public class FighterControllerTest {
     @Test
     void shouldRespondWithAllActiveFightersByGender() throws Exception {
 
-        String filePathResponse = "__files/ActiveFightersByGenderResponse.json";
+        String filePathResponse ="__files/response/ActiveFightersByGenderResponse.json";
 
         String responseContent = Files.readString(
                 Paths.get(
@@ -114,8 +115,8 @@ public class FighterControllerTest {
     @Test
     void addFighterToDB() throws Exception {
 
-        String filePathRequest = "__files/AddFighterRequest.json";
-        String filePathResponse = "__files/AddFighterResponse.json";
+        String filePathRequest = "__files/request/AddFighterRequest.json";
+        String filePathResponse = "__files/response/AddFighterResponse.json";
 
         String requestContent = Files.readString(
                 Paths.get(
@@ -143,6 +144,47 @@ public class FighterControllerTest {
                 .andExpect(status().isOk());
 
     }
+
+    @Test
+    void addFighterGeneralValidationError() throws Exception {
+
+        String filePathRequest = "__files/request/validation/AddFighterGeneralValidationError.json";
+
+        String requestContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathRequest))
+                                .toURI()
+                )
+        );
+        mockMvc.perform(
+                        post(baseUrl + addFighter)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(requestContent))
+                .andExpect(content().string(containsString("with 5 errors")))
+                .andExpect(status().isBadRequest());
+
+    }
+
+    @Test
+    void addFighterFightsValidationError() throws Exception {
+
+        String filePathRequest = "__files/request/validation/AddFighterFightsValidationError.json";
+
+        String requestContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathRequest))
+                                .toURI()
+                )
+        );
+        mockMvc.perform(
+                        post(baseUrl + addFighter)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(requestContent))
+                .andExpect(content().string(containsString("Fights amount does not add up")))
+                .andExpect(status().isBadRequest());
+    }
+
+    // TODO test transactional logic or save in DB error for adding fighter?
 
     private static FighterOverview mockSecondFighterOverview(long fighterId) {
         return FighterOverview

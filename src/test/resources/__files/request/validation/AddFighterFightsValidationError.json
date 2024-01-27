@@ -1,0 +1,16 @@
+{
+  "firstName": "Zoran",
+  "lastName": "Pribo",
+  "showName": "Zoky",
+  "height": "175",
+  "gender": "MALE",
+  "totalFights": 20,
+  "wins": 5,
+  "losses": 1,
+  "draws": 0,
+  "countryOrigin": "Sweden",
+  "countryLiving": "Sweden",
+  "club": "None",
+  "status": "ACTIVE",
+  "birthDate": "1975-09-08"
+}
