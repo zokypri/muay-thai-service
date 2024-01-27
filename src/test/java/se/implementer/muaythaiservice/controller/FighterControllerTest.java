@@ -38,7 +38,7 @@ public class FighterControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-    private static final String baseUrl = "/v1/muay-thai/fighters";
+    private static final String baseUrl = "/v1/fighters";
 
     private static final String fighterDetailsURL = "/fighter/details/{fighterId}";
 

@@ -24,7 +24,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/muay-thai/fighters")
+@RequestMapping("v1/fighters")
 public class FighterController {
 
     private final FighterService fighterService;

@@ -28,7 +28,7 @@ public class FightServiceTest {
         var fightId = 1L;
         when(fightInfoRepository.findAllByFighterId(fightId)).thenReturn(FightsTestData.mockFightsInfo(fightId));
 
-        var actualResult = fightService.getFighterHistory(fightId);
+        var actualResult = fightService.getFightHistory(fightId);
 
         var expectedResult = mockFightInfoDetails(fightId);
 
@@ -40,7 +40,7 @@ public class FightServiceTest {
         var fightId = 1L;
         when(fightInfoRepository.findAllByFighterId(fightId)).thenReturn(List.of());
 
-        var actualResult = fightService.getFighterHistory(fightId);
+        var actualResult = fightService.getFightHistory(fightId);
 
         var expectedResult = List.of();
 

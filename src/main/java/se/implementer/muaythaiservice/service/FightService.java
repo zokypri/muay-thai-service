@@ -22,7 +22,7 @@ public class FightService {
         this.fightInfoRepository = fightInfoRepository;
     }
 
-    public List<FightInfoDetails> getFighterHistory(long fighterId) {
+    public List<FightInfoDetails> getFightHistory(long fighterId) {
         log.info("Fetching all fight history for fighter with id: {}", fighterId);
         var fights = fightInfoRepository.findAllByFighterId(fighterId);
         return fights

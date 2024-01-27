@@ -21,7 +21,7 @@ import se.implementer.muaythaiservice.service.FightService;
 
 @Slf4j
 @RestController
-@RequestMapping("v1/muay-thai/fights")
+@RequestMapping("v1/fights")
 public class FightController {
 
     private final FightService fightService;
@@ -37,10 +37,10 @@ public class FightController {
                     content = @Content)
     })
     @SecurityRequirement(name ="Bearer Auth")
-    @GetMapping("/fighter/history/{fighterId}")
-    public List<FightInfoDetails> getFighterHistory(@PathVariable long fighterId) {
+    @GetMapping("/fight/history/{fighterId}")
+    public List<FightInfoDetails> getFightHistory(@PathVariable long fighterId) {
         log.info("Receiving request to fetch all fight history for fighter with id: {}", fighterId);
-        return fightService.getFighterHistory(fighterId);
+        return fightService.getFightHistory(fighterId);
     }
 
     @Operation(summary = " Add new fight")
