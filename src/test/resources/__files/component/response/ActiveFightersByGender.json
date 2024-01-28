@@ -1,0 +1,40 @@
+[
+  {
+    "fighterId": 8888,
+    "firstName": "Smilla",
+    "lastName": "Sundell",
+    "showName": "The Storm",
+    "gender": "FEMALE",
+    "totalFights": 80,
+    "wins": 50,
+    "losses": 0,
+    "countryOrigin": "Sweden",
+    "age": 19,
+    "status": "ACTIVE"
+  },
+  {
+    "fighterId": 8889,
+    "firstName": "Sarel",
+    "lastName": "De-jong",
+    "showName": "The Hunter",
+    "gender": "FEMALE",
+    "totalFights": 80,
+    "wins": 40,
+    "losses": 1,
+    "countryOrigin": "Holland",
+    "age": 23,
+    "status": "ACTIVE"
+  },
+  {
+    "fighterId": 8890,
+    "firstName": "Barbara",
+    "lastName": "Aquilar",
+    "gender": "FEMALE",
+    "totalFights": 120,
+    "wins": 60,
+    "losses": 2,
+    "countryOrigin": "Brazil",
+    "age": 22,
+    "status": "ACTIVE"
+  }
+]

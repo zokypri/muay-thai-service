@@ -1,0 +1,13 @@
+{
+  "fighterId": 8888,
+  "firstName": "Smilla",
+  "lastName": "Sundell",
+  "showName": "The Storm",
+  "gender": "FEMALE",
+  "totalFights": 80,
+  "wins": 50,
+  "losses": 0,
+  "countryOrigin": "Sweden",
+  "age": 19,
+  "status": "ACTIVE"
+}

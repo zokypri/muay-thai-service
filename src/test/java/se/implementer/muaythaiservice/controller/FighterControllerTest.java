@@ -27,6 +27,11 @@ import se.implementer.muaythaiservice.model.dto.response.Responses;
 import se.implementer.muaythaiservice.service.FighterService;
 import static se.implementer.muaythaiservice.util.testdata.FighterTestData.mockFighterOverview;
 import se.implementer.muaythaiservice.util.testdata.FightsTestData;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.addFighter;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.allActiveFightersByGender;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrl;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterDetailsURL;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterOverviewURL;
 
 @WebMvcTest(controllers = FighterController.class)
 @AutoConfigureMockMvc
@@ -37,16 +42,6 @@ public class FighterControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
-
-    private static final String baseUrl = "/v1/fighters";
-
-    private static final String fighterDetailsURL = "/fighter/details/{fighterId}";
-
-    private static final String fighterOverviewURL = "/fighter/overview/{fighterId}";
-
-    private static final String allActiveFightersByGender = "/fighter/active/{gender}";
-
-    private static final String addFighter = "/fighter";
 
     private static final long fighterID = 11L;
 

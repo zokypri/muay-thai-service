@@ -1,0 +1,53 @@
+{
+  "fighterId": 8888,
+  "fightsInfo": [
+    {
+      "fightId": 334,
+      "fighterId": 8888,
+      "result": "WIN",
+      "opponentId": 33,
+      "fightDay": "2020-12-31",
+      "location": "Koh Samui",
+      "arena": "SAMUI_INTERNATIONAL_STADIUM",
+      "weight": "57",
+      "fightOrg": "SAMUI INTERNATIONAL STADIUM"
+    },
+    {
+      "fightId": 337,
+      "fighterId": 8888,
+      "result": "WIN",
+      "opponentId": 99,
+      "fightDay": "2021-12-31",
+      "location": "Bangkok",
+      "arena": "BANGKOK_ARENA",
+      "weight": "57",
+      "fightOrg": "SuperChamp"
+    },
+    {
+      "fightId": 338,
+      "fighterId": 8888,
+      "result": "WIN",
+      "opponentId": 2,
+      "fightDay": "2022-06-22",
+      "location": "Singapore",
+      "arena": "SINGI_STADIUM",
+      "weight": "57",
+      "fightOrg": "One Championship"
+    }
+  ],
+  "firstName": "Smilla",
+  "lastName": "Sundell",
+  "showName": "The Storm",
+  "height": "176",
+  "gender": "FEMALE",
+  "totalFights": 80,
+  "wins": 50,
+  "losses": 0,
+  "draws": 0,
+  "countryOrigin": "Sweden",
+  "countryLiving": "Thailand",
+  "club": "Fairtex",
+  "age": 19,
+  "status": "ACTIVE",
+  "birthDate": "2004-12-30"
+}
