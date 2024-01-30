@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import static org.hamcrest.Matchers.containsString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,10 +19,14 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import se.implementer.muaythaiservice.model.dto.Gender;
+import se.implementer.muaythaiservice.repository.FightInfoRepository;
 import se.implementer.muaythaiservice.repository.FighterRepository;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.addFight;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.addFighter;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.allActiveFightersByGender;
-import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrl;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrlFightInfo;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrlFighter;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fightHistory;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterDetailsURL;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterOverviewURL;
 
@@ -35,6 +40,9 @@ public class MuayThaiIT {
 
     @Autowired
     private FighterRepository fighterRepository;
+
+    @Autowired
+    private FightInfoRepository fightInfoRepository;
 
     @Test
     void shouldFetchFighterOverview() throws Exception {
@@ -50,7 +58,7 @@ public class MuayThaiIT {
                 )
         );
 
-        mockMvc.perform(get(baseUrl + fighterOverviewURL, fighterId))
+        mockMvc.perform(get(baseUrlFighter + fighterOverviewURL, fighterId))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
     }
@@ -69,7 +77,7 @@ public class MuayThaiIT {
                 )
         );
 
-        mockMvc.perform(get(baseUrl + fighterDetailsURL, fighterId))
+        mockMvc.perform(get(baseUrlFighter + fighterDetailsURL, fighterId))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
     }
@@ -86,7 +94,7 @@ public class MuayThaiIT {
                 )
         );
 
-        mockMvc.perform(get(baseUrl + allActiveFightersByGender, Gender.FEMALE))
+        mockMvc.perform(get(baseUrlFighter + allActiveFightersByGender, Gender.FEMALE))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
 
@@ -114,7 +122,7 @@ public class MuayThaiIT {
         );
 
         mockMvc.perform(
-                        post(baseUrl + addFighter)
+                        post(baseUrlFighter + addFighter)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(requestContent))
                 .andExpect(content().json(responseContent))
@@ -139,8 +147,81 @@ public class MuayThaiIT {
 
         var fighterId = 99;
 
-        mockMvc.perform(get(baseUrl + fighterOverviewURL, fighterId))
+        mockMvc.perform(get(baseUrlFighter + fighterOverviewURL, fighterId))
                 .andExpect(status().isNotFound())
                 .andExpect(content().string(containsString("Fighter with id 99 not found")));
+    }
+
+    @Test
+    void shouldRespondWithFightHistory() throws Exception {
+
+        var fighterId = 8888L;
+
+        String filePathResponse = "__files/component/response/FightHistory.json";
+
+        String responseContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathResponse))
+                                .toURI()
+                )
+        );
+
+        mockMvc.perform(get(baseUrlFightInfo + fightHistory, fighterId))
+                .andExpect(content().json(responseContent))
+                .andExpect(status().isOk());
+
+        var fightHistory = fightInfoRepository.findAllByFighterId(fighterId);
+
+        assertFalse(fightHistory.isEmpty());
+
+        assertEquals(3, fightHistory.size());
+        assertEquals(334, fightHistory.get(0).getFightId());
+        assertEquals("WIN", fightHistory.get(0).getResult());
+    }
+
+    @Test
+    void shouldRespondWithEmptyListWhenNoFightsForFighter() throws Exception {
+
+        var fighterId = 555;
+
+        mockMvc.perform(get(baseUrlFightInfo + fightHistory, fighterId))
+                .andExpect(status().isOk());
+
+        var fightHistory = fightInfoRepository.findAllByFighterId(fighterId);
+
+        assertTrue(fightHistory.isEmpty());
+    }
+
+    @Test
+    void shouldAddFight() throws Exception {
+
+        String filePathRequest = "__files/request/AddFight.json";
+        String filePathResponse = "__files/response/AddFightResponse.json";
+
+        String requestContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathRequest))
+                                .toURI()
+                )
+        );
+
+        String responseContent = Files.readString(
+                Paths.get(
+                        Objects.requireNonNull(getClass().getClassLoader().getResource(filePathResponse))
+                                .toURI()
+                )
+        );
+
+        mockMvc.perform(
+                        post(baseUrlFightInfo + addFight)
+                                .contentType(MediaType.APPLICATION_JSON)
+                                .content(requestContent))
+                .andExpect(content().json(responseContent))
+                .andExpect(status().isOk());
+
+        var fights = fightInfoRepository.findAllByFighterId(11L);
+
+        assertFalse(fights.isEmpty());
+
     }
 }

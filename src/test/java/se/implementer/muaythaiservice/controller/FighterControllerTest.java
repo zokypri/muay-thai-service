@@ -29,7 +29,7 @@ import static se.implementer.muaythaiservice.util.testdata.FighterTestData.mockF
 import se.implementer.muaythaiservice.util.testdata.FightsTestData;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.addFighter;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.allActiveFightersByGender;
-import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrl;
+import static se.implementer.muaythaiservice.util.testdata.TEST_URL.baseUrlFighter;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterDetailsURL;
 import static se.implementer.muaythaiservice.util.testdata.TEST_URL.fighterOverviewURL;
 
@@ -62,7 +62,7 @@ public class FighterControllerTest {
         when(fighterService.getFighterDetails(fighterID))
                 .thenReturn(mockFighterDetailsFixedDate(fighterID));
 
-        mockMvc.perform(get(baseUrl + fighterDetailsURL, fighterID))
+        mockMvc.perform(get(baseUrlFighter + fighterDetailsURL, fighterID))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
     }
@@ -82,7 +82,7 @@ public class FighterControllerTest {
         when(fighterService.getFighterOverview(fighterID))
                 .thenReturn(mockFighterOverview(fighterID));
 
-        mockMvc.perform(get(baseUrl + fighterOverviewURL, fighterID))
+        mockMvc.perform(get(baseUrlFighter + fighterOverviewURL, fighterID))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
     }
@@ -102,7 +102,7 @@ public class FighterControllerTest {
         when(fighterService.getAllActiveFightersByGender(Gender.MALE))
                 .thenReturn(List.of(mockFighterOverview(fighterID), mockSecondFighterOverview(fighterID + 1)));
 
-        mockMvc.perform(get(baseUrl + allActiveFightersByGender, Gender.MALE))
+        mockMvc.perform(get(baseUrlFighter + allActiveFightersByGender, Gender.MALE))
                 .andExpect(content().json(responseContent))
                 .andExpect(status().isOk());
     }
@@ -132,7 +132,7 @@ public class FighterControllerTest {
 
 
         mockMvc.perform(
-                        post(baseUrl + addFighter)
+                        post(baseUrlFighter + addFighter)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(requestContent))
                 .andExpect(content().json(responseContent))
@@ -152,7 +152,7 @@ public class FighterControllerTest {
                 )
         );
         mockMvc.perform(
-                        post(baseUrl + addFighter)
+                        post(baseUrlFighter + addFighter)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(requestContent))
                 .andExpect(content().string(containsString("with 5 errors")))
@@ -172,7 +172,7 @@ public class FighterControllerTest {
                 )
         );
         mockMvc.perform(
-                        post(baseUrl + addFighter)
+                        post(baseUrlFighter + addFighter)
                                 .contentType(MediaType.APPLICATION_JSON)
                                 .content(requestContent))
                 .andExpect(content().string(containsString("Fights amount does not add up")))
