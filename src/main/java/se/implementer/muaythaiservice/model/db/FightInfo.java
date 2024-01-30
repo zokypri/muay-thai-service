@@ -37,8 +37,10 @@ public class FightInfo {
     Long fightId;
 
     // TODO change to LAZY if response does not have all data when using history URL
+    // TODO this might not be needed and could be removed.
+    //  Only for debugging purpose was this added in the beginning but it has no more purpose
     @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "FIGHTER_ID", insertable = false, updatable = false)
     Fighter fighter;
 
