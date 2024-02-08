@@ -27,6 +27,7 @@ import java.util.List;
 @RequestMapping("v1/fighters")
 public class FighterController {
 
+    //TODO split controllers between external user and backoffice user
     private final FighterService fighterService;
     public FighterController(FighterService fighterService) {
         this.fighterService = fighterService;

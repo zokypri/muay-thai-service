@@ -37,6 +37,7 @@ public class Fighter {
     Long fighterId;
 
     //TODO change to Lazy if fightsInfo data is not needed in the REST response
+    // TODO investigate if mappedBy can be removed since we need a reference to FightInfo but not from FightInfo to Fighter
     @OneToMany(mappedBy = "fighter", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     List<FightInfo> fightsInfo;
 

@@ -24,6 +24,8 @@ import se.implementer.muaythaiservice.service.FightService;
 @RequestMapping("v1/fights")
 public class FightController {
 
+    //TODO split controllers between external user and backoffice user
+
     private final FightService fightService;
     public FightController(FightService fightService) {
         this.fightService = fightService;

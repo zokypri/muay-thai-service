@@ -36,8 +36,8 @@ public class FightInfo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long fightId;
 
-    // TODO change to LAZY if response does not have all data when using history URL
-    // TODO this might not be needed and could be removed.
+    // TODO change to LAZY if response does not have all data when using history URL, this might be needed though to make sure a fightinfo canät be added if there is no fighter
+    // TODO investigate if we can remove this since it might not be needed and could be removed.
     //  Only for debugging purpose was this added in the beginning but it has no more purpose
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
